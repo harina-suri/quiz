@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="icon" href="https://images.vexels.com/media/users/3/139158/isolated/preview/c862a3c9ef219140fb365301f9ebbd50-black-dot.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <main class="main">
+        <div class="header">
+            <nav class="navbar">
+                <img src="images/logjj.PNG" class="logo" alt="Logo">
+                <input type="checkbox" class="checkbox" id="checkbox" onchange="handleThemeChange()">
+                <label for="checkbox" class="checkbox-label">
+                    <i class="fa fa-sun-o"></i>
+                    <i class="fa fa-moon-o"></i>
+                    <span class="ball"></span>
+                </label>
+            </nav>
+        </div>
+        <div class="container">
+            <section class="quizSection">
+                <div class="quizbox" id="quizbox">
+                    <h1>Web Development</h1>
+                    <div class="quizheader">
+                        <span>Quiz Website Tutorials</span>
+                        <span class="headerscore">Score: 0 / 20</span>
+                    </div>
+                    <h2 class="questiontext">______ is not a Popup box in JavaScript</h2>
+                    <div class="optionlist">
+                        <div class="option">
+                            <span>A. Confirm</span>
+                        </div>
+                        <div class="option">
+                            <span>B. Prompt</span>
+                        </div>
+                        <div class="option">
+                            <span>C. Alert</span>
+                        </div>
+                        <div class="optiaon">
+                            <span>D. Error</span>
+                        </div>
+                    </div>
+                    <div class="quizfooter">
+                        <span class="questiontotal">1 of 20 Questions</span>
+                        <button class="nextbtn">Next</button>
+                    </div>
+                </div>
+                <div class="resultbox" id="resultbox">
+                    <h2>Quiz Result!</h2>
+                    <div class="percentagecontainer">
+                        <div class="circularprogress">
+                            <span class="progressvalue">0%</span>
+                        </div>
+                        <span class="scoretext">Your Score 0 out of 20</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="tryagainbtn">Try Again</button>
+                        <button class="gohomebtn">Go To Home</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="home">
+            <div class="home-content">
+                <h1>HTML QUIZ</h1>
+                <p>This interactive HTML quiz is designed to provide an engaging platform for users to enhance their understanding and proficiency in HTML, CSS, and JavaScript.</p>
+                <button class="starbtn">Start Quiz</button>
+            </div>
+        </section>
+    </main>
+    <div class="blur-overlay"></div>
+    <div class="popup-info">
+        <h2>Quiz Guide</h2>
+        <span class="info">1. Read the questions carefully and answer the questions</span>
+        <span class="info">2. Each question will have 4 options to choose from.</span>
+        <span class="info">3. You can choose only one option for each question.</span>
+        <span class="info">4. You will get 1 point for each correct answer.</span>
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Quiz</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
+        </div>
+    </div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

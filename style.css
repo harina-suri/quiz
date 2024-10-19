@@ -1,0 +1,495 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.blur {
+    filter: blur(5px); 
+    transition: filter 0.3s ease;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Navbar styles */
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo styling */
+.logo {
+    width: 150px;
+    height: auto;
+    margin-right: 8px;
+}
+
+/* Theme toggle switch */
+.checkbox {
+    display: none;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background-color: #111;
+    border-radius: 50px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.checkbox-label .fa-sun-o, .checkbox-label .fa-moon-o {
+    position: absolute;
+    color: #fff;
+    font-size: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.checkbox-label .fa-sun-o {
+    left: 5px;
+    color: chocolate;
+}
+
+.checkbox-label .fa-moon-o {
+    right: 5px;
+}
+
+.ball {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    transition: left 0.3s;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+    left: 27px;
+}
+
+body.light-mode {
+    background-color: burlywood;
+    color: LemonChiffon;
+}
+
+body.light-mode .header {
+    background-color: LemonChiffon;
+}
+
+body.light-mode .home-content h1,
+body.light-mode .home-content p,
+body.light-mode .popup-info h2,
+body.light-mode .popup-info .info {
+    color: black;
+}
+
+body.dark-mode {
+    background-color: lightblue;
+    color: grey;
+}
+
+body.dark-mode .header {
+    background-color: grey;
+}
+
+body.dark-mode .home-content h1,
+body.dark-mode .home-content p,
+body.dark-mode .popup-info h2,
+body.dark-mode .popup-info .info {
+    color: grey;
+}
+
+/* Home section styles */
+.home {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-content {
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-content h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.home-content p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.home-content .starbtn {
+    width: 190px;
+    height: 55px;
+    background: LemonChiffon;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    font-size: 18px;
+    color: black;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.home-content .starbtn:hover {
+    background: peru;
+}
+
+/* Popup styling */
+.popup-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: lemonchiffon;
+    border-radius: 6px;
+    padding: 10px 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;  
+}
+
+.popup-info.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.blur-overlay {
+    position: relative;
+    z-index: 100; 
+}
+
+.popup-info h2 {
+    font-size: 50px;
+    color: black;
+}
+
+.popup-info .info {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: 500;
+    margin: 4px 0;
+    color: black;
+}
+
+.popup-info .btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.popup-info .btn-group .info-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    background: darkseagreen;
+    border: 2px solid darkseagreen;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: lemonchiffon;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.popup-info .btn-group .info-btn:hover {
+    transform: translateY(-5px); 
+    transition: transform 0.3s ease;
+}
+
+.quizSection {
+    display: none;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    width: 100vw;
+    background: #DDA0DD;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.quizSection.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.quizbox {
+    width: 500px;
+    max-width: 90%; 
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 25px;
+    transform: scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex; /* Enable flexbox on the quiz box */
+    flex-direction: column; /* Arrange children vertically */
+    justify-content: flex-start; /* Center vertically */
+    align-items: flex-start; /* Center horizontally */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Add some shadow */
+    margin: 0 auto; /* Center horizontally */
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+.quizbox h1,
+.quizbox .quizheader,
+.quizbox .questiontext,
+.quizbox .optionlist,
+.quizfooter {
+    text-align: left; /* Ensure all text is left-aligned */
+    margin: 0; /* Reset any margin */
+    padding: 0; /* Reset any padding */
+}
+.quizbox.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+/* Footer styles */
+.quizfooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid white;
+    padding-top: 20px;
+    margin-top: 20px ;
+    color: darkmagenta;
+}
+.quizbox h1{
+    font-size: 32px;
+    text-align: center !important;
+    background: linear-gradient(45deg, transparent,white,transparent);
+    border-radius: 6px;
+    color: darkmagenta;
+}
+.quizbox .quizheader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+    
+}
+.quizheader span {
+    padding: 20px;
+    font-size: 25px;
+    font-weight: 500;
+    color: darkmagenta;
+}
+.quizheader .headerscore{
+    background: white;
+    border-radius: 3px;
+    padding: 7px;
+}
+.quizbox .questiontext{
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px;
+    color: darkmagenta;
+    align-items: left;
+
+}
+.optionlist {
+    display: flex; /* Enable flexbox for options */
+    flex-direction: column; /* Stack options vertically */
+    width: 100%; /* Make sure it takes full width of the quiz box */
+}
+.optionlist .option{
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 4px;
+    font-size: 17px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: .3s;
+    color: darkmagenta;
+    text-align: left;
+}
+.optionlist .option:hover {
+    background:white;
+    border-color: white;
+}
+.quizfooter .questiontotal{
+    font-size: 18px;
+    font-weight: 600;
+
+}
+.nextbtn {
+    position: absolute;
+    right: 20px; 
+    bottom: 50; 
+    width: 100px;
+    height: 45px;
+    background: white;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: darkmagenta;
+    font-weight: 550;
+    cursor: pointer;
+    transition: .5s;
+}
+.quizfooter .nextbtn:hover{
+    background:#DDA0DD;
+    border-color:white;
+
+}
+.hide {
+    display: none;
+}
+.option.correct {
+    border-color: #4CAF50;
+    color: darkmagenta;
+}
+
+.option.incorrect {
+    border-color: #f44336;
+    color: darkmagenta;
+}
+
+.resultbox{
+    display: none;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.resultbox.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+.resultbox h2 {
+    font-size: 52px;
+    text-align: center;
+}
+.resultbox .percentagecontainer {
+    width: 300px;
+    background:transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px;
+    text-align: center;
+}
+.percentagecontainer .circularprogress{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: conic-gradient(white 3.6deg,rgba(255,255,255,.1) 0deg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px auto;
+}
+.percentagecontainer .circularprogress::before{
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #DDA0DD;
+    border-radius: 50%;
+}
+.circularprogress .progressvalue{
+    position: absolute;
+    font-size: 45px;
+    font-weight: 600;
+    color: darkmagenta;
+}
+.percentagecontainer .scoretext {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+}
+.buttons button {
+    width: 130px;
+    height: 47px;
+    background-color: white;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: darkmagenta;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    cursor:pointer;
+}
+.buttons .tryagainbtn:hover{
+    background:#DDA0DD;
+    border-color:white;
+}
+.buttons .gohomebtn:hover{
+    background:#DDA0DD;
+    border-color:white;
+}
